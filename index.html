@@ -2,61 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Type Ahead 👀</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://fav.farm/✅" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriel Schmidt - Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+      color: #222;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    nav {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    nav a {
+      color: #222;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #007acc;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project {
+      background: #f0f4f8;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .project h3 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #222;
+      color: #fff;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Gabriel Jun Schmidt</h1>
+    <p>Web Developer | Designer | Programmer</p>
+  </header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm <strong>Gabe</strong>, a passionate web developer based in Japan. I love building beautiful, functional websites and applications. Welcome to my portfolio!
+      </p>
+    </section>
 
-  <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
-    <ul class="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
-    </ul>
-  </form>
-<script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>Project One</h3>
+          <p>A short description of your project. What does it do? What technologies did you use?</p>
+          <a href="https://github.com/yourusername/project-one" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+          <h3>Project Two</h3>
+          <p>Another project description. Highlight your role and the outcome.</p>
+          <a href="https://github.com/yourusername/project-two" target="_blank">View on GitHub</a>
+        </div>
+        <div class="project">
+          <h3>Project Three</h3>
+          <p>Describe a third project. What was interesting or challenging about it?</p>
+          <a href="https://github.com/yourusername/project-three" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+    </section>
 
-const cities = [];
-fetch(endpoint)
-  .then(blob => blob.json())
-  .then(data => cities.push(...data));
-
-function findMatches(wordToMatch, cities) {
-  return cities.filter(place => {
-    // here we need to figure out if the city or state matches what was searched
-    const regex = new RegExp(wordToMatch, 'gi');
-    return place.city.match(regex) || place.state.match(regex)
-  });
-}
-
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-function displayMatches() {
-  const matchArray = findMatches(this.value, cities);
-  const html = matchArray.map(place => {
-    const regex = new RegExp(this.value, 'gi');
-    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
-    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
-    return `
-      <li>
-        <span class="name">${cityName}, ${stateName}</span>
-        <span class="population">${numberWithCommas(place.population)}</span>
-      </li>
-    `;
-  }).join('');
-  suggestions.innerHTML = html;
-}
-
-const searchInput = document.querySelector('.search');
-const suggestions = document.querySelector('.suggestions');
-
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches);
-
-</script>
-  </body>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Feel free to reach out via email: <a href="mailto:g.schmidt2024@icloud.com">g.schmidt2024@icloud.com</a><br>
+        Or connect with me on <a href="https://www.linkedin.com/in/gabriel-schmidt-944239202/" target="_blank">LinkedIn</a>.
+      </p>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+</body>
 </html>
